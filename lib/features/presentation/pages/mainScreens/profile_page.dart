@@ -1,3 +1,6 @@
+import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/deals/deals_page.dart';
+import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/airport_taxis/airport_taxis_page.dart';
+import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/travel_articles/travel_articles_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,26 +20,6 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor:  const Color(0xff003290),
-        title:  Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            InkWell(
-              onTap: (){},
-              child: Container(
-                margin: const EdgeInsets.all(14.0),
-                height: 30,
-                width: 36,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1.0, color: Colors.white),
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: const Center(
-                  child: Icon(Icons.question_mark_outlined,color: Colors.white,size: 24.0,),
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
       body: SingleChildScrollView(
         child: Stack(
@@ -67,12 +50,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           )
                       ),
                       const SizedBox(height: 12.0),
-                      const Row(
+                      const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          FittedBox(child: Text('Daminov',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 24),)),
-                          SizedBox(width: 6.0),
-                          FittedBox(child: Text('Alisher',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 24),)),
+                          FittedBox(child: Text('Daminov',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)),
+                          SizedBox(height: 6.0),
+                          FittedBox(child: Text('Alisher',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)),
                         ],
                       ),
                     ],
@@ -117,32 +100,47 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const SizedBox(height: 16.0,),
                   //#Deals
-                  const Row(
-                    children: [
-                      Icon(Icons.data_saver_on),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Deals',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
-                    ],
+                   InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, DealsPage.id);
+                    },
+                    child: const Row(
+                      children: [
+                        Icon(Icons.data_saver_on),
+                        SizedBox(width: 14.0,),
+                        FittedBox(child: Text('Deals',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16.0,),
                   //#Airport taxis
-                  const Row(
-                    children: [
-                      Icon(Icons.airplane_ticket_outlined),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Airport taxis',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, AirportTaxisPage.id);
+                    },
+                    child: const Row(
+                      children: [
+                        Icon(Icons.airplane_ticket_outlined),
+                        SizedBox(width: 14.0,),
+                        FittedBox(child: Text('Airport taxis',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
 
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16.0,),
                   //#Travel articles
-                  const Row(
-                    children: [
-                      Icon(Icons.travel_explore),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Travel articles',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, TravelArticlesPage.id);
+                    },
+                    child: const Row(
+                      children: [
+                        Icon(Icons.travel_explore),
+                        SizedBox(width: 14.0,),
+                        FittedBox(child: Text('Travel articles',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
 
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16.0,),
                   //#Settings

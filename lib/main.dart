@@ -12,6 +12,16 @@ import 'features/presentation/pages/mainScreens/homePage/car_rental_page.dart';
 import 'features/presentation/pages/mainScreens/homePage/stays_page.dart';
 import 'features/presentation/pages/mainScreens/homePage/taxi_page.dart';
 import 'features/presentation/pages/mainScreens/home_page.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/deals/deals_page.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/deals/item_list_page.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/airport_taxis/airport_taxis_page.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/destinations.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/eat_drink.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/family_travel.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/future_of_travel.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/travel_articles.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/travel_tips.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/travel_articles_page.dart';
 import 'features/presentation/pages/mainScreens/profile_page.dart';
 import 'features/presentation/pages/mainScreens/savedPlusPage/renameAlertDialog/rename_page.dart';
 import 'features/presentation/pages/mainScreens/savedPlusPage/saved_plus_page.dart';
@@ -53,6 +63,16 @@ class MyApp extends StatelessWidget {
         BookingsPlusPage.id: (context)=> const BookingsPlusPage(),
         SignInPage.id: (context)=> const SignInPage(),
         SignUpPage.id: (context)=> const SignUpPage(),
+        DealsPage.id: (context)=> const DealsPage(),
+        DealsItemListPage.id: (context)=> const DealsItemListPage(),
+        AirportTaxisPage.id: (context)=> const AirportTaxisPage(),
+        TravelArticlesPage.id: (context)=> const TravelArticlesPage(),
+        TravelArticlesTabPage.id: (context)=> const TravelArticlesTabPage(),
+        EatDrinkTabPage.id: (context)=> const EatDrinkTabPage(),
+        DestinationsTabPage.id: (context)=> const DestinationsTabPage(),
+        FamilyTravelTabPage.id: (context)=> const FamilyTravelTabPage(),
+        FutureOfTravelTabPage.id: (context)=> const FutureOfTravelTabPage(),
+        TravelTipsTabPage.id: (context)=> const TravelTipsTabPage(),
       },
     );
   }

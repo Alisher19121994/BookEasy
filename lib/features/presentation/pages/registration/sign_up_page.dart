@@ -1,6 +1,5 @@
 import 'package:booking_uz/features/presentation/pages/registration/sign_in_page.dart';
 import 'package:flutter/material.dart';
-
 import '../main_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -124,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         Icons.lock_open_rounded,
                         color: Colors.black,
                       ),
-                      labelText: 'Conform password',
+                      labelText: 'Confirm password',
                       border: const OutlineInputBorder()
                   ),
                       validator: (value) {
@@ -146,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: width * 0.80,
                   child: ElevatedButton(
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const MainPage()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const MainPage()));
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:  Colors.blueAccent
