@@ -1,6 +1,8 @@
 import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/deals/deals_page.dart';
 import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/airport_taxis/airport_taxis_page.dart';
 import 'package:booking_uz/features/presentation/pages/mainScreens/profile/discover/travel_articles/travel_articles_page.dart';
+import 'package:booking_uz/features/presentation/pages/mainScreens/profile/settings/settings_main_page.dart';
+import 'package:booking_uz/features/presentation/pages/registration/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -18,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor:  const Color(0xff003290),
       ),
@@ -34,6 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 14.0),
                   //#profile photo and fullname
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,17 +84,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       FittedBox(child: Text('Management',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17),)),
                     ],
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#manage your accounts
-                  const Row(
-                    children: [
-                      Icon(Icons.perm_identity_rounded),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Manage your account',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                  InkWell(
+                    onTap: (){
 
-                    ],
+                    },
+                    child: Container(
+                      height: 46.0,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.perm_identity_rounded),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Manage your account',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+
+                        ],
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#discover
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -98,77 +111,106 @@ class _ProfilePageState extends State<ProfilePage> {
                       FittedBox(child: Text('Discover',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17),)),
                     ],
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#Deals
                    InkWell(
                     onTap: (){
                       Navigator.pushNamed(context, DealsPage.id);
                     },
-                    child: const Row(
-                      children: [
-                        Icon(Icons.data_saver_on),
-                        SizedBox(width: 14.0,),
-                        FittedBox(child: Text('Deals',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
-                      ],
+                    child: Container(
+                      height: 46.0,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.data_saver_on),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Deals',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#Airport taxis
                   InkWell(
                     onTap: (){
                       Navigator.pushNamed(context, AirportTaxisPage.id);
                     },
-                    child: const Row(
-                      children: [
-                        Icon(Icons.airplane_ticket_outlined),
-                        SizedBox(width: 14.0,),
-                        FittedBox(child: Text('Airport taxis',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                    child: Container(
+                      height: 46.0,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.airplane_ticket_outlined),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Airport taxis',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#Travel articles
                   InkWell(
                     onTap: (){
                       Navigator.pushNamed(context, TravelArticlesPage.id);
                     },
-                    child: const Row(
-                      children: [
-                        Icon(Icons.travel_explore),
-                        SizedBox(width: 14.0,),
-                        FittedBox(child: Text('Travel articles',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                    child: Container(
+                      height: 46.0,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.travel_explore),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Travel articles',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#Settings
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      FittedBox(child: Text('Settings',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17),)),
+                      FittedBox(child: Text('Settings and legal',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17),)),
                     ],
                   ),
-                  const SizedBox(height: 16.0,),
+                  const SizedBox(height: 10.0,),
                   //#Settings
-                  const Row(
-                    children: [
-                      Icon(Icons.settings),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Settings',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
-
-                    ],
+                   InkWell(
+                     onTap: (){
+                       Navigator.pushNamed(context, SettingsMainPage.id);
+                     },
+                     child: Container(
+                       height: 46.0,
+                       padding: const EdgeInsets.all(2.0),
+                       child: const Row(
+                        children: [
+                          Icon(Icons.settings),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Settings',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 17),)),
+                        ],
                   ),
-                  const SizedBox(height: 16.0,),
+                     ),
+                   ),
+                  const SizedBox(height: 10.0,),
                   //#Sign out
-                  const Row(
-                    children: [
-                      Icon(Icons.logout_rounded,color: Colors.redAccent,),
-                      SizedBox(width: 14.0,),
-                      FittedBox(child: Text('Sign out',style: TextStyle(color: Colors.redAccent,fontWeight: FontWeight.normal,fontSize: 17),)),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, SignInPage.id);
+                    },
+                    child: Container(
+                      height: 46.0,
+                      padding: const EdgeInsets.all(2.0),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.logout_rounded,color: Colors.redAccent,),
+                          SizedBox(width: 14.0,),
+                          FittedBox(child: Text('Sign out',style: TextStyle(color: Colors.redAccent,fontWeight: FontWeight.normal,fontSize: 17),)),
 
-                    ],
+                        ],
+                      ),
+                    ),
                   ),
 
                 ],

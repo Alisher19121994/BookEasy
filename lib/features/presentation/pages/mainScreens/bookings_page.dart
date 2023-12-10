@@ -20,10 +20,18 @@ class _BookingsPageState extends State<BookingsPage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: const Color(0xff003290),
           title: const Text('Trips', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
           actions: [
+            IconButton(
+              onPressed: () {
+               // Navigator.pushNamed(context, BookingsPlusPage.id);
+
+              },
+              icon: const Icon(Icons.add_card,color: Colors.white,size: 30.0,),
+            ),
             IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, BookingsPlusPage.id);

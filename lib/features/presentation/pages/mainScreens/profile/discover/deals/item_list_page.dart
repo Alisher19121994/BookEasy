@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../widget/profile/discover/item_list.dart';
+
 class DealsItemListPage extends StatefulWidget {
   const DealsItemListPage({super.key});
   static const String id = 'DealsItemListPage';
@@ -17,12 +19,26 @@ class _DealsItemListPageState extends State<DealsItemListPage> {
         centerTitle: false,
         backgroundColor: const Color(0xff003290),
         title: const Text(
-          'Deals',
+          'Bukhara',
           style: TextStyle(color: Colors.white, fontSize: 20.0),
         ),
       ),
-      body: Center(
-        child: Text('DealsItemListPage',style: TextStyle(fontSize: 45),),
+      body:ListView(
+        children: [
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+          itemListDealsNextPage(context),
+        ],
       ),
     );
   }

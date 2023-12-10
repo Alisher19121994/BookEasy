@@ -86,7 +86,6 @@ class _TravelArticlesPageState extends State<TravelArticlesPage> {
 
           ),
         ),
-
         body: const TabBarView(
             children:[
               TravelArticlesTabPage(),

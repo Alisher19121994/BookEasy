@@ -24,12 +24,13 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: const Color(0xff003290),
           centerTitle: true,
           title: const Text(
             'BookEasy',
             style: TextStyle(
-                color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(

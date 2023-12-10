@@ -24,31 +24,41 @@ class _CancelledPageState extends State<CancelledPage> {
               Container(
                   margin: const EdgeInsets.all(24.0),
                   padding: const EdgeInsets.all(18.0),
-                  height: height * 0.23,
+                  height: height * 0.30,
                   width: double.infinity,
                   child: const Center(
-                      child: Image(image: AssetImage(LocalImages.images)))
+                      child: Image(image: AssetImage(LocalImages.mapC)))
               ),
               const SizedBox(height: 30.0),
               Column(
                 children: [
                   SizedBox(
                       height: height * 0.04,
-                      width: double.infinity,
-                      child: const Center(
-                          child: Text('Sometimes plans change',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 24),))
+                      width: width * 0.70,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                            side: const BorderSide(width: 1.0)
+                        ),
+                        onPressed: (){
+
+                        },
+                        child: const Center(
+                            child: Text('Sometimes plans change',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),)),
+                      )
                   ),
-                  // const SizedBox(height: 18.0),
-                  SizedBox(
-                      height: height * 0.08,
-                      width: double.infinity,
-                      child: const Center(
-                          child: Column(
+                   const SizedBox(height: 8.0),
+                  const SizedBox(
+                      //height: height * 0.08,
+                      //width: double.infinity,
+                      child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('Here you can refer to all trips you have cancelled.',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 18),),
-                              Text('Maybe next time!',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 18),),
+                              Text('Here you can refer to all trips you have cancelled.',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 14),),
+                              SizedBox(height: 4.0),
+                              Text('Maybe next time!',style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 15),),
                             ],
-                          ))
+                          )
                   ),
                 ],
               ),

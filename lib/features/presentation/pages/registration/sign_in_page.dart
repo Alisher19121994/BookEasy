@@ -36,7 +36,7 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(height: 40.0),
                 //#email
                 SizedBox(
-                  height: height * 0.080,
+                  height: height * 0.056,
                   child: TextFormField(
                      // controller: controller.controllerUsername,
                       style: const TextStyle(color: Colors.black),
@@ -58,10 +58,10 @@ class _SignInPageState extends State<SignInPage> {
                       }
                   ),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 8.0),
                 //#Password
                 SizedBox(
-                  height: height * 0.080,
+                  height: height * 0.056,
                   child:  TextFormField(
                     //controller: controller.controllerPassword,
                     keyboardType: TextInputType.visiblePassword,
@@ -98,25 +98,25 @@ class _SignInPageState extends State<SignInPage> {
                       }
                   )
                 ),
-                const SizedBox(height: 12.0),
-                Center(
-                  child: SizedBox(
+                const SizedBox(height: 8.0),
+                 SizedBox(
                     height: height * 0.055,
-                    width: width * 0.80,
-                    child: ElevatedButton(
+                    width: width * 0.9,
+                    child: OutlinedButton(
                       onPressed: (){
-                        Navigator.pushNamed(context, MainPage.id);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const MainPage()));
+
                       },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:  Colors.blueAccent
-                      ),
+                     style: OutlinedButton.styleFrom(
+                       side: const BorderSide(width: 1.0),
+                       backgroundColor: Colors.white
+                     ),
                       child:const Text(
                         'Sign in',
                         style: TextStyle(
-                            color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+                            color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),),
                   ),
-                ),
                 const SizedBox(height: 12.0),
                 //#Don\'t you have an account yet?
                  SizedBox(

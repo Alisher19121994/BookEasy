@@ -36,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 40.0),
               //#email
               SizedBox(
-                height: height * 0.080,
+                height: height * 0.055,
                 child: TextFormField(
                   // controller: controller.controllerUsername,
                     style: const TextStyle(color: Colors.black),
@@ -58,10 +58,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                 ),
               ),
-              const SizedBox(height: 12.0),
+              const SizedBox(height: 8.0),
               //#Password
               SizedBox(
-                  height: height * 0.080,
+                  height: height * 0.055,
                   child:  TextFormField(
                     //controller: controller.controllerPassword,
                       keyboardType: TextInputType.visiblePassword,
@@ -98,10 +98,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                   )
               ),
-              const SizedBox(height: 12.0),
+              const SizedBox(height: 8.0),
               //#Conform Password
               SizedBox(
-                  height: height * 0.080,
+                  height: height * 0.055,
                   child:  TextFormField(
                     //controller: controller.controllerPassword,
                       keyboardType: TextInputType.visiblePassword,
@@ -138,24 +138,23 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                   )
               ),
-              const SizedBox(height: 12.0),
-              Center(
-                child: SizedBox(
-                  height: height * 0.055,
-                  width: width * 0.80,
-                  child: ElevatedButton(
-                    onPressed: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const MainPage()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:  Colors.blueAccent
-                    ),
-                    child:const Text(
-                      'Sign up',
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
-                    ),),
-                ),
+              const SizedBox(height: 8.0),
+              SizedBox(
+                height: height * 0.055,
+                width: width * 0.9,
+                child: OutlinedButton(
+                  onPressed: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const MainPage()));
+                  },
+                  style: OutlinedButton.styleFrom(
+                      side: const BorderSide(width: 1.0),
+                      backgroundColor: Colors.white
+                  ),
+                  child:const Text(
+                    'Sign up',
+                    style: TextStyle(
+                        color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
+                  ),),
               ),
               const SizedBox(height: 12.0),
               //#Do you have an account?

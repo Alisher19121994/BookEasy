@@ -21,6 +21,7 @@ class _SavedPageState extends State<SavedPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff003290),
         title: const Text('Saved', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
         ),

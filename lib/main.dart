@@ -13,6 +13,7 @@ import 'features/presentation/pages/mainScreens/homePage/stays_page.dart';
 import 'features/presentation/pages/mainScreens/homePage/taxi_page.dart';
 import 'features/presentation/pages/mainScreens/home_page.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/deals/deals_page.dart';
+import 'features/presentation/pages/mainScreens/profile/discover/deals/details_of_city/item_of_city.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/deals/item_list_page.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/airport_taxis/airport_taxis_page.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/destinations.dart';
@@ -22,6 +23,9 @@ import 'features/presentation/pages/mainScreens/profile/discover/travel_articles
 import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/travel_articles.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/tab_bars_of_travel_articles/travel_tips.dart';
 import 'features/presentation/pages/mainScreens/profile/discover/travel_articles/travel_articles_page.dart';
+import 'features/presentation/pages/mainScreens/profile/settings/about/privacy_policy.dart';
+import 'features/presentation/pages/mainScreens/profile/settings/about/terms_and_conditions.dart';
+import 'features/presentation/pages/mainScreens/profile/settings/settings_main_page.dart';
 import 'features/presentation/pages/mainScreens/profile_page.dart';
 import 'features/presentation/pages/mainScreens/savedPlusPage/renameAlertDialog/rename_page.dart';
 import 'features/presentation/pages/mainScreens/savedPlusPage/saved_plus_page.dart';
@@ -73,6 +77,10 @@ class MyApp extends StatelessWidget {
         FamilyTravelTabPage.id: (context)=> const FamilyTravelTabPage(),
         FutureOfTravelTabPage.id: (context)=> const FutureOfTravelTabPage(),
         TravelTipsTabPage.id: (context)=> const TravelTipsTabPage(),
+        SettingsMainPage.id: (context)=> const SettingsMainPage(),
+        ItemOfCityPage.id: (context)=> const ItemOfCityPage(),
+        PrivacyPolicyPage.id: (context)=> const PrivacyPolicyPage(),
+        TermsAndConditionsPage.id: (context)=> const TermsAndConditionsPage(),
       },
     );
   }

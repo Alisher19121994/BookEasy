@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../widget/profile/discover/deals_page.dart';
 
 class DealsPage extends StatefulWidget {
