@@ -1,6 +1,6 @@
 import 'package:booking_uz/features/presentation/pages/mainScreens/savedPlusPage/saved_plus_page.dart';
 import 'package:flutter/material.dart';
-import '../../../../constants/image/local_images.dart';
+import '../../../../core/constants/image/local_images.dart';
 import '../../widget/saved/saved_plus_data.dart';
 
 class SavedPage extends StatefulWidget {

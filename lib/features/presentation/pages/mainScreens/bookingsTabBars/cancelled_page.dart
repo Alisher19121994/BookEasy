@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/image/local_images.dart';
+import '../../../../../core/constants/image/local_images.dart';
+
 
 class CancelledPage extends StatefulWidget {
   const CancelledPage({super.key});

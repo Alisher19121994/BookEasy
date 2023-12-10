@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/image/local_images.dart';
+import '../../../../../core/constants/image/local_images.dart';
 
 class PastPage extends StatefulWidget {
   const PastPage({super.key});

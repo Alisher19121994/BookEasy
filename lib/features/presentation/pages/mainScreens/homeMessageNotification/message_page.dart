@@ -1,5 +1,5 @@
-import 'package:booking_uz/constants/image/local_images.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/constants/image/local_images.dart';
 import '../../main_page.dart';
 
 class MessagePage extends StatefulWidget {

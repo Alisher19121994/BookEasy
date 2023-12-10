@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../constants/image/local_images.dart';
+import '../../../../../core/constants/image/local_images.dart';
 import '../../../widget/home/more_for_you_list_item.dart';
 import '../../../widget/home/more_for_you_list_item_title.dart';
 import '../../../widget/home/travel_more_list_item.dart';
