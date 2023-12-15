@@ -59,7 +59,6 @@ sealed class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) =>
-                //HomeBloc(currencyUsCase: FetchCurrencyEvent()),
                 sl<HomeBloc>()..add(const FetchCurrencyEvent()),
             child: const HomePage(),
           ),

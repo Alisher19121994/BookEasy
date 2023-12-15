@@ -3,105 +3,105 @@ sealed class Routes {
 
   static const String initial = '/SplashPage';
 
-  // Home
+  // HomePage 1
   static const String homePage = '/HomePage';
 
-  // Home
+  // SavedPage 2
   static const String savedPage = '/SavedPage';
 
-  // Home
+  // BookingsPage 3
   static const String bookingsPage = '/BookingsPage';
 
-  // ProfilePage
+  // ProfilePage 4
   static const String profilePage = '/ProfilePage';
 
-  // ActivePage
+  // ActivePage 5
   static const String activePage = '/ActivePage';
 
-  // PastPage
+  // PastPage 6
   static const String pastPage = '/PastPage';
 
-  // CancelledPage
+  // CancelledPage 7
   static const String cancelledPage = '/CancelledPage';
 
-  // EnterDestination
+  // EnterDestination 8
   static const String enterDestination = '/EnterDestination';
 
-  // StaysPage
+  // StaysPage 9
   static const String staysPage = '/StaysPage';
 
-  // CarRentalPage
+  // CarRentalPage 10
   static const String carRentalPage = '/CarRentalPage';
 
-  // TaxiPage
+  // TaxiPage 11
   static const String taxiPage = '/TaxiPage';
 
-  // AttractionPage
+  // AttractionPage 12
   static const String attractionPage = '/AttractionPage';
 
-  // MessagePage
+  // MessagePage 13
   static const String messagePage = '/MessagePage';
 
-  // NotificationPage
+  // NotificationPage 14
   static const String notificationPage = '/NotificationPage';
 
-  // SavedPlusPage
+  // SavedPlusPage 15
   static const String savedPlusPage = '/SavedPlusPage';
 
-  // RenameSavedPage
+  // RenameSavedPage 16
   static const String renameSavedPage = '/RenameSavedPage';
 
-  // TitlePage
+  // TitlePage 17
   static const String titlePage = '/TitlePage';
 
-  // BookingsPlusPage
+  // BookingsPlusPage 18
   static const String bookingsPlusPage = '/BookingsPlusPage';
 
-  // SignInPage
+  // SignInPage 19
   static const String signInPage = '/SignInPage';
 
-  // SignUpPage
+  // SignUpPage 20
   static const String signUpPage = '/SignUpPage';
 
-  // DealsPage
+  // DealsPage 21
   static const String dealsPage = '/DealsPage';
 
-  // DealsItemListPage
+  // DealsItemListPage 22
   static const String dealsItemListPage = '/DealsItemListPage';
 
-  // AirportTaxisPage
+  // AirportTaxisPage 23
   static const String airportTaxisPage = '/AirportTaxisPage';
 
-  // TravelArticlesPage
+  // TravelArticlesPage 24
   static const String travelArticlesPage = '/TravelArticlesPage';
 
-  // TravelArticlesTabPage
+  // TravelArticlesTabPage 25
   static const String travelArticlesTabPage = '/TravelArticlesTabPage';
 
-  // EatDrinkTabPage
+  // EatDrinkTabPage 26
   static const String eatDrinkTabPage = '/EatDrinkTabPage';
 
-  // DestinationsTabPage
+  // DestinationsTabPage 27
   static const String destinationsTabPage = '/DestinationsTabPage';
 
-  // FamilyTravelTabPage
+  // FamilyTravelTabPage 28
   static const String familyTravelTabPage = '/FamilyTravelTabPage';
 
-  // FutureOfTravelTabPage
+  // FutureOfTravelTabPage 29
   static const String futureOfTravelTabPage = '/FutureOfTravelTabPage';
 
-  // TravelTipsTabPage
+  // TravelTipsTabPage 30
   static const String travelTipsTabPage = '/TravelTipsTabPage';
 
-  // SettingsMainPage
+  // SettingsMainPage 31
   static const String settingsMainPage = '/SettingsMainPage';
 
-  // ItemOfCityPage
+  // ItemOfCityPage 32
   static const String itemOfCityPage = '/ItemOfCityPage';
 
-  // PrivacyPolicyPage
+  // PrivacyPolicyPage 33
   static const String privacyPolicyPage = '/PrivacyPolicyPage';
 
-  // TermsAndConditionsPage
+  // TermsAndConditionsPage 34
   static const String TermsAndConditionsPage = '/TermsAndConditionsPage';
 }
