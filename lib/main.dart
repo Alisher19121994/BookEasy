@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'app.dart';
+import 'injector_container.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await homeFeature();
   runApp(const MyApp());
 }
 

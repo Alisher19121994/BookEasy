@@ -4,4 +4,7 @@ import '../../../../core/errors/failure.dart';
 
 abstract class HomeRepository {
   Future<Either<Failure, List<CurrencyEntity>>> fetchCurrency();
+
+  // API methods
+  //Future<DataState<List<CurrencyEntity>>> fetchCurrency();
 }

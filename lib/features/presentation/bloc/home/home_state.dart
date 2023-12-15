@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import '../../../domain/entity/home/home_entity.dart';
 
 class HomeState extends Equatable {
@@ -29,12 +28,12 @@ class HomeState extends Equatable {
 
 enum CurrencyStatus { initial, success, error, loading }
 
-extension CurrencyStatusX on CurrencyStatus {
-  bool get isInitial => this == CurrencyStatus.initial;
-
-  bool get isSuccess => this == CurrencyStatus.success;
-
-  bool get isError => this == CurrencyStatus.error;
-
-  bool get isLoading => this == CurrencyStatus.loading;
-}
+// extension CurrencyStatusX on CurrencyStatus {
+//   bool get isInitial => this == CurrencyStatus.initial;
+//
+//   bool get isSuccess => this == CurrencyStatus.success;
+//
+//   bool get isError => this == CurrencyStatus.error;
+//
+//   bool get isLoading => this == CurrencyStatus.loading;
+// }

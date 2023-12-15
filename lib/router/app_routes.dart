@@ -39,6 +39,7 @@ import '../features/presentation/pages/mainScreens/home_page.dart';
 import '../features/presentation/pages/mainScreens/profile/settings/about/privacy_policy.dart';
 import '../features/presentation/pages/splash/bloc/splash_bloc.dart';
 import '../features/presentation/pages/splash/pages/splash_page.dart';
+import '../injector_container.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -54,15 +55,15 @@ sealed class AppRoutes {
             child: const SplashPage(),
           ),
         );
-      // case Routes.homePage:
-      //   return MaterialPageRoute(
-      //     builder: (_) => BlocProvider(
-      //       create: (context) =>
-      //           //HomeBloc(currencyUsCase: FetchCurrencyEvent()),
-      //           sl<HomeBloc>()..add(const FetchCurrencyEvent()),
-      //       child: const HomePage(),
-      //     ),
-      //   );
+      case Routes.homePage:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                //HomeBloc(currencyUsCase: FetchCurrencyEvent()),
+                sl<HomeBloc>()..add(const FetchCurrencyEvent()),
+            child: const HomePage(),
+          ),
+        );
 /****/
       // case Routes.savedPage:
       //   return MaterialPageRoute(

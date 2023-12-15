@@ -1,8 +1,8 @@
-import 'package:booking_uz/features/data/data_source/user_remote_data_source.dart';
+import 'package:booking_uz/features/data/data_source/remote/user_remote_data_source.dart';
 import 'package:dio/dio.dart';
 
-import '../../../core/errors/exceptions.dart';
-import '../model/home/currency.dart';
+import '../../../../core/errors/exceptions.dart';
+import '../../model/home/currency.dart';
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   const HomeRemoteDataSourceImpl(this.dio);

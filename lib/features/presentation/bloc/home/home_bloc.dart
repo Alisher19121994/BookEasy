@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-
 import '../../../domain/usecase/home/home_usecase.dart';
 import 'home_event.dart';
 import 'home_state.dart';
@@ -10,7 +9,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<FetchCurrencyEvent>(_currencyGetData);
   }
 
-  final CurrencyUseCase currencyUsCase;
+  final HomeUseCase currencyUsCase;
 
   Future<void> _currencyGetData(FetchCurrencyEvent event, Emitter<HomeState> emit) async {
     emit(state.copyWith(status: CurrencyStatus.loading));

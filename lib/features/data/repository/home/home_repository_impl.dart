@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../domain/entity/home/home_entity.dart';
 import '../../../domain/repository/home/home_repository.dart';
-import '../../data_source/user_remote_data_source.dart';
+import '../../data_source/remote/user_remote_data_source.dart';
 
 class HomeRepositoryImpl extends HomeRepository {
   HomeRepositoryImpl({
