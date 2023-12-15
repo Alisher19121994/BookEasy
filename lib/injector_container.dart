@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/data/data_source/remote/user_remote_data_source.dart';
@@ -12,24 +15,52 @@ import 'features/presentation/pages/splash/bloc/splash_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> homeFeature() async {
-  sl.registerLazySingleton(() => Dio()
-    ..options = BaseOptions(
-      contentType: 'application/json',
-      sendTimeout: const Duration(seconds: 30),
-      connectTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
-    ));
-  sl.registerFactory<SplashBloc>(SplashBloc.new);
-  sl.registerFactory(() => HomeBloc(currencyUsCase: sl()));
-  //
-  // /// UseCases
-  sl.registerLazySingleton<HomeUseCase>(() => HomeUseCase(sl()));
+   // External
+  //await initHive();
 
-  ///Data and Network
-  sl.registerLazySingleton<HomeRemoteDataSource>(
-      () => HomeRemoteDataSourceImpl(sl()));
+  sl
+    ..registerLazySingleton(() => Dio()
+      ..options = BaseOptions(
+        contentType: 'application/json',
+        sendTimeout: const Duration(seconds: 30),
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
+      )
+      ..interceptors.addAll(
+        [
+          LogInterceptor(
+            requestBody: kDebugMode,
+            responseBody: kDebugMode,
+            logPrint: (object) =>
+            kDebugMode ? log('dio: ${object.toString()}') : null,
+          ),
+          //chuck.getDioInterceptor(),
+        ],
+      ),
+    )
 
-  ///Repositories
-  sl.registerLazySingleton<HomeRepository>(
-      () => HomeRepositoryImpl(remoteDataSource: sl()));
+
+    // SplashBloc
+    ..registerFactory<SplashBloc>(SplashBloc.new)
+
+    //HomeBloc
+    ..registerFactory(() => HomeBloc(currencyUsCase: sl()))
+
+    //UseCases
+    ..registerLazySingleton<HomeUseCase>(() => HomeUseCase(sl()))
+
+    //Data and Network
+    ..registerLazySingleton<HomeRemoteDataSource>(
+        () => HomeRemoteDataSourceImpl(sl()))
+
+    //Repositories
+    ..registerLazySingleton<HomeRepository>(
+        () => HomeRepositoryImpl(remoteDataSource: sl()));
 }
+// Future<void> initHive() async {
+//   const boxName = 'clean_architecture_box';
+//   final Directory directory = await getApplicationDocumentsDirectory();
+//   Hive.init(directory.path);
+//   _box = await Hive.openBox<dynamic>(boxName);
+// }
+
