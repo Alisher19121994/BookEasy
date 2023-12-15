@@ -14,31 +14,31 @@ import 'features/presentation/pages/splash/bloc/splash_bloc.dart';
 
 final sl = GetIt.instance;
 
-Future<void> homeFeature() async {
-   // External
+Future<void> init() async {
+  // External
   //await initHive();
 
   sl
-    ..registerLazySingleton(() => Dio()
-      ..options = BaseOptions(
-        contentType: 'application/json',
-        sendTimeout: const Duration(seconds: 30),
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
-      )
-      ..interceptors.addAll(
-        [
-          LogInterceptor(
-            requestBody: kDebugMode,
-            responseBody: kDebugMode,
-            logPrint: (object) =>
-            kDebugMode ? log('dio: ${object.toString()}') : null,
-          ),
-          //chuck.getDioInterceptor(),
-        ],
-      ),
+    ..registerLazySingleton(
+      () => Dio()
+        ..options = BaseOptions(
+          contentType: 'application/json',
+          sendTimeout: const Duration(seconds: 30),
+          connectTimeout: const Duration(seconds: 30),
+          receiveTimeout: const Duration(seconds: 30),
+        )
+        ..interceptors.addAll(
+          [
+            LogInterceptor(
+              requestBody: kDebugMode,
+              responseBody: kDebugMode,
+              logPrint: (object) =>
+                  kDebugMode ? log('dio: ${object.toString()}') : null,
+            ),
+            //chuck.getDioInterceptor(),
+          ],
+        ),
     )
-
 
     // SplashBloc
     ..registerFactory<SplashBloc>(SplashBloc.new)
@@ -63,4 +63,3 @@ Future<void> homeFeature() async {
 //   Hive.init(directory.path);
 //   _box = await Hive.openBox<dynamic>(boxName);
 // }
-

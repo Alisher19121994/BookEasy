@@ -4,7 +4,7 @@ import 'injector_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await homeFeature();
+  await init();
   runApp(const MyApp());
 }
 
