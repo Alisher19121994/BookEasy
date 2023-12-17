@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "887844536975",
+    "project_id": "bookeasy-9fd9c",
+    "storage_bucket": "bookeasy-9fd9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887844536975:android:a29e515f5a3250e07866fa",
+        "android_client_info": {
+          "package_name": "com.daminov.booking_uz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5uDVE7nK6SZQjSx05CMw9hF9hgz1Z8uE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/image/local_images.dart';
 import '../../../widget/home/more_for_you_list_item.dart';
@@ -13,6 +14,11 @@ class CarRentalPage extends StatefulWidget {
 }
 
 class _CarRentalPageState extends State<CarRentalPage> {
+
+
+  final CollectionReference _travelMoreList =
+  FirebaseFirestore.instance.collection('TravelMoreList');
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -109,22 +115,38 @@ class _CarRentalPageState extends State<CarRentalPage> {
                       padding: const EdgeInsets.all(2.0),
                       height: height * 0.20,
                       width:  double.infinity,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                          travelMoreListItem(context),
-                        ],
-                      )
+                      // child: ListView(
+                      //   scrollDirection: Axis.horizontal,
+                      //   children: [
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //     travelMoreListItem(context),
+                      //   ],
+                      // )
+                    child: StreamBuilder(
+                      stream: _travelMoreList.snapshots(),
+                      builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapShot){
+                        if(streamSnapShot.hasData){
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: streamSnapShot.data!.docs.length,
+                            itemBuilder: (context, index){
+                              final DocumentSnapshot documentSnapshot = streamSnapShot.data!.docs[index];
+                              return travelMoreListItem(context,documentSnapshot);
+                            },
+                          );
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    ),
                   ),
                 ],
               ),
