@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget moreForYouListItemTitle(BuildContext context){
+Widget moreForYouListItemTitle(BuildContext context,){
   var height = MediaQuery.of(context).size.height;
   var width = MediaQuery.of(context).size.width;
   return Container(

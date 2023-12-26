@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
         body: BlocListener<SplashBloc, SplashState>(
           listener: (context, state) {
             if (state.isTimerFinished) {
-              Navigator.pushReplacementNamed(context, Routes.homePage);
+              Navigator.pushReplacementNamed(context, Routes.mainPage);
             }
           },
           child: const AnnotatedRegion<SystemUiOverlayStyle>(

@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-Widget moreForYouListItem(BuildContext context){
+Widget moreForYouListItem(BuildContext context,DocumentSnapshot documentSnapshot){
   var height = MediaQuery.of(context).size.height;
   var width = MediaQuery.of(context).size.width;
+  //print(documentSnapshot.get(field));
   return Container(
     margin: const EdgeInsets.only(left: 3.0,right: 3.0,top: 6.0),
-    height: height * 0.3,
+    height: height * 0.45,
     width: width * 0.45,
     child: Stack(
       children: [
@@ -39,8 +40,11 @@ Widget moreForYouListItem(BuildContext context){
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Sales day', style: TextStyle(color: Colors.white,fontSize: 19,fontWeight: FontWeight.bold),),
-              Text('Save up to 25% on cars rentals', style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.normal),),
+              Text(documentSnapshot['hotel_place_name'], style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),),
+              const SizedBox(height: 2.0),
+           //   Text(documentSnapshot.get('hotel_name'), style: const TextStyle(color: Colors.white,fontSize: 13,fontWeight: FontWeight.normal),),
+              const SizedBox(height: 2.0),
+             // Text(documentSnapshot['hotel_title'], style: const TextStyle(color: Colors.white,fontSize: 13,fontWeight: FontWeight.normal),),
             ],
           ),
         )

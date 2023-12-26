@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/image/local_images.dart';
 import '../../../../../core/loading/model_progress_hub.dart';
+import '../../../../data/model/firebase/travel_more_model.dart';
 import '../../../widget/currency_item.dart';
 import '../../../widget/home/more_for_you_list_item.dart';
 import '../../../widget/home/more_for_you_list_item_title.dart';
@@ -20,56 +21,13 @@ class StaysPage extends StatefulWidget {
 
 class _StaysPageState extends State<StaysPage> {
 
-  TextEditingController discountTitleController = TextEditingController();
-  TextEditingController titleController = TextEditingController();
-
-  Future<void> showData([DocumentSnapshot? documentSnapshot])async{
-    if(documentSnapshot != null){
-      discountTitleController.text = documentSnapshot['discountTitle'];
-      titleController.text = documentSnapshot['title'];
-    }
-   await showModalBottomSheet(
-     isScrollControlled: true,
-        builder: (context){
-          return Container(
-            margin: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  controller: discountTitleController,
-                  decoration: InputDecoration(
-                    label: Text('discountTitle')
-                  ),
-                ),
-                TextFormField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                      label: Text('Title')
-                  ),
-                ),
-
-                ElevatedButton(
-                    onPressed: ()async{
-                      String discount = discountTitleController.text;
-                      String title = titleController.text;
-
-                      await _travelMoreList.add({
-                        'discountTitle': discount, 'title':title
-                      });
-                      discountTitleController.text = '';
-                      titleController.text = '';
-
-                    },
-                    child: Text('Press'))
-              ],
-            ),
-          );
-        }, context: context);
-  }
-
-  final CollectionReference _travelMoreList =
-  FirebaseFirestore.instance.collection('TravelMoreList');
+  late QueryDocumentSnapshot  <Map <String, dynamic>> snapshot;
+  String? id;
+  UserIdModel idModel = UserIdModel();
+  final CollectionReference _travelMoreList = FirebaseFirestore.instance.collection('TravelMoreList');
+  final CollectionReference _exploreDeals  = FirebaseFirestore.instance.collection('ExploreDeals');
+  //final Future<QuerySnapshot<Map<String, dynamic>>> _destination = FirebaseFirestore.instance.collection('Destinations') as Future<QuerySnapshot<Map<String, dynamic>>>;
+  final CollectionReference _destination = FirebaseFirestore.instance.collection('Destinations');
 
   @override
   Widget build(BuildContext context) {
@@ -77,49 +35,6 @@ class _StaysPageState extends State<StaysPage> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      // body: BlocBuilder<HomeBloc, HomeState>(
-      //   builder: (context, state) => ModalProgressHUD(
-      //     //inAsyncCall: state.status.isLoading,
-      //     child: CustomScrollView(
-      //       slivers: [
-      //         SliverPadding(
-      //           padding: const EdgeInsets.only(bottom: 16),
-      //           sliver: SliverList(
-      //             delegate: SliverChildBuilderDelegate((context, index) => CurrencyWidget(
-      //                 currency: state.currencyList[index],
-      //               ),
-      //               childCount: state.currencyList.length,
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-      /***/
-      // body: BlocBuilder<HomeBloc,HomeState>(
-      //   builder: (context, state){
-      //     if (state is CurrencyStatus.loading) {
-      //       return const Center(child: CupertinoActivityIndicator());
-      //     }
-      //     if (state is RemoteArticlesError) {
-      //       return const Center(child: Icon(Icons.refresh));
-      //     }
-      //     if (state is RemoteArticlesDone) {
-      //       return ListView.builder(
-      //         itemBuilder: (context,index){
-      //           return ArticleWidget(
-      //             article: state.articles![index] ,
-      //             onArticlePressed: (article) => _onArticlePressed(context,article),
-      //           );
-      //         },
-      //         itemCount: state.articles!.length,
-      //       );
-      //     }
-      //     return const SizedBox();
-      //   },
-      // ),
-      /***/
       body: Container(
         margin: const EdgeInsets.only(left: 7.0,right: 7.0),
         child: SingleChildScrollView(
@@ -206,12 +121,6 @@ class _StaysPageState extends State<StaysPage> {
                       padding: const EdgeInsets.all(2.0),
                       height: height * 0.20,
                       width:  double.infinity,
-                      // child: ListView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   children: [
-                      //     travelMoreListItem(context),
-                      //   ],
-                      // )
                     child: StreamBuilder(
                       stream: _travelMoreList.snapshots(),
                       builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapShot){
@@ -233,56 +142,82 @@ class _StaysPageState extends State<StaysPage> {
               ),
               const SizedBox(height: 16.0),
               //#Explore deals
-              Container(
-                height: height * 0.30,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: const Color(0xfff2f6fa)
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(14.0),
-                      width: width * 0.60,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('15% discount',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
-                              SizedBox(height: 8.0),
-                              Text('Enjoy discounts at participants properties worldwide',style:
-                              TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
-                            ],
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue
-                            ),
-                            onPressed: (){},
-                            child:Text('Explore deals',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
-
-                          )
-                        ],
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    height: height * 0.30,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: const Color(0xfff2f6fa)
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
-                            image: DecorationImage(
-                                image: AssetImage(LocalImages.hotel),
-                                fit: BoxFit.cover
-                            )
-                        ),
-                      ),
+                    child: StreamBuilder(
+                      stream: _exploreDeals.snapshots(),
+                      builder: (context,AsyncSnapshot<QuerySnapshot> streamSnapShot){
+                        if(streamSnapShot.hasData){
+                          return ListView.builder(
+                            primary: false,
+                            shrinkWrap: true,
+                              itemCount: streamSnapShot.data!.docs.length,
+                              itemBuilder:(context,index){
+                                final DocumentSnapshot documentSnapshot = streamSnapShot.data!.docs[index];
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(14.0),
+                                      width: width * 0.60,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(documentSnapshot['dealsDiscountTitle'],style: const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
+                                              const SizedBox(height: 8.0),
+                                              Text(documentSnapshot['dealsTitle'],style:
+                                              const TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
+                                            ],
+                                          ),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.blue
+                                            ),
+                                            onPressed: (){
+
+
+                                            },
+                                            child:const Text('Explore deals',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                            image: DecorationImage(
+                                                image: AssetImage(LocalImages.hotel),
+                                                fit: BoxFit.cover
+                                            )
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              }
+                          );
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
                     )
-                  ],
-                ),),
+                  ),
+                ],
+              ),
               const SizedBox(height: 16.0),
               //#more for you and list items
               Column(
@@ -291,26 +226,26 @@ class _StaysPageState extends State<StaysPage> {
                 children: [
                   const Text('More for you',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
                   const SizedBox(height: 6.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItem(context),
-                      moreForYouListItemTitle(context)
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItemTitle(context),
-                      moreForYouListItem(context),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItem(context),
-                      moreForYouListItemTitle(context)
-                    ],
+                  Container(
+                    padding: const EdgeInsets.all(2.0),
+                    height: height * 0.35,
+                    width:  double.infinity,
+                    child: StreamBuilder(
+                      stream: _destination.snapshots(),
+                      builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapShot){
+                        if(streamSnapShot.hasData){
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: streamSnapShot.data!.docs.length,
+                            itemBuilder: (context, index){
+                              final DocumentSnapshot documentSnapshot = streamSnapShot.data!.docs[index];
+                              return moreForYouListItem(context,documentSnapshot);
+                            },
+                          );
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -319,12 +254,6 @@ class _StaysPageState extends State<StaysPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-           onPressed: () {
-             showData();
-           },
-
-),
     );
   }
 }

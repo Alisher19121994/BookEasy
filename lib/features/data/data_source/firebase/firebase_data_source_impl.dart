@@ -9,7 +9,7 @@ import '../../../../core/errors/exceptions.dart';
 class HomeFirebaseDataSourceImpl extends HomeFirebaseDataSource {
 
   @override
-  Future<List<TravelMoreModel>> fetchExploreDeals() {
+  Future<List<UserIdModel>> fetchExploreDeals() {
     //try{
       final CollectionReference _travelMoreList = FirebaseFirestore.instance.collection('TravelMoreList');
 

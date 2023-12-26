@@ -4,4 +4,6 @@ abstract class HomeRemoteDataSource {
   const HomeRemoteDataSource();
 
   Future<List<CurrencyResponseModel>> fetchCurrency();
+
+
 }

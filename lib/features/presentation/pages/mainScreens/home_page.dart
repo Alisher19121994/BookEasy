@@ -87,7 +87,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ]),
         ),
-        body: const TabBarView(children: [
+        body: const TabBarView(
+            children: [
           StaysPage(),
           CarRentalPage(),
           TaxiPage(),

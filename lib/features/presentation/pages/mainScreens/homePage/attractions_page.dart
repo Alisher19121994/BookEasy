@@ -15,9 +15,9 @@ class AttractionPage extends StatefulWidget {
 
 class _AttractionPageState extends State<AttractionPage> {
 
-  final CollectionReference _travelMoreList =
-  FirebaseFirestore.instance.collection('TravelMoreList');
-
+  final CollectionReference _travelMoreList = FirebaseFirestore.instance.collection('TravelMoreList');
+  final CollectionReference _exploreDeals  = FirebaseFirestore.instance.collection('ExploreDeals');
+  final CollectionReference _destination = FirebaseFirestore.instance.collection('Destinations');
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -130,55 +130,75 @@ class _AttractionPageState extends State<AttractionPage> {
               const SizedBox(height: 16.0),
               //#Explore deals
               Container(
-                height: height * 0.30,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: const Color(0xfff2f6fa)
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(14.0),
-                      width: width * 0.60,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('15% discount',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
-                              SizedBox(height: 8.0),
-                              Text('Enjoy discounts at participants properties worldwide',style:
-                              TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
-                            ],
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue
-                            ),
-                            onPressed: (){},
-                            child:Text('Explore deals',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+                  height: height * 0.30,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: const Color(0xfff2f6fa)
+                  ),
+                  child: StreamBuilder(
+                    stream: _exploreDeals.snapshots(),
+                    builder: (context,AsyncSnapshot<QuerySnapshot> streamSnapShot){
+                      if(streamSnapShot.hasData){
+                        return ListView.builder(
+                            primary: false,
+                            shrinkWrap: true,
+                            itemCount: streamSnapShot.data!.docs.length,
+                            itemBuilder:(context,index){
+                              final DocumentSnapshot documentSnapshot = streamSnapShot.data!.docs[index];
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(14.0),
+                                    width: width * 0.60,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(documentSnapshot['dealsDiscountTitle'],style: const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
+                                            const SizedBox(height: 8.0),
+                                            Text(documentSnapshot['dealsTitle'],style:
+                                            const TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
+                                          ],
+                                        ),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.blue
+                                          ),
+                                          onPressed: (){
 
-                          )
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
-                            image: DecorationImage(
-                                image: AssetImage(LocalImages.hotel),
-                                fit: BoxFit.cover
-                            )
-                        ),
-                      ),
-                    )
-                  ],
-                ),),
+
+                                          },
+                                          child:const Text('Explore deals',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                          image: DecorationImage(
+                                              image: AssetImage(LocalImages.hotel),
+                                              fit: BoxFit.cover
+                                          )
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            }
+                        );
+                      }
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  )
+              ),
               const SizedBox(height: 16.0),
               //#more for you and list items
               Column(
@@ -187,26 +207,26 @@ class _AttractionPageState extends State<AttractionPage> {
                 children: [
                   const Text('More for you',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
                   const SizedBox(height: 6.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItem(context),
-                      moreForYouListItemTitle(context)
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItemTitle(context),
-                      moreForYouListItem(context),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      moreForYouListItem(context),
-                      moreForYouListItemTitle(context)
-                    ],
+                  Container(
+                    padding: const EdgeInsets.all(2.0),
+                    height: height * 0.35,
+                    width:  double.infinity,
+                    child: StreamBuilder(
+                      stream: _destination.snapshots(),
+                      builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapShot){
+                        if(streamSnapShot.hasData){
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: streamSnapShot.data!.docs.length,
+                            itemBuilder: (context, index){
+                              final DocumentSnapshot documentSnapshot = streamSnapShot.data!.docs[index];
+                              return moreForYouListItem(context,documentSnapshot);
+                            },
+                          );
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    ),
                   ),
                 ],
               ),

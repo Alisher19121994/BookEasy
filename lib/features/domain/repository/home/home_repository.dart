@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 
 abstract class HomeRepository {
+
   Future<Either<Failure, List<CurrencyEntity>>> fetchCurrency();
 
   // API methods

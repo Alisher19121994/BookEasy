@@ -37,6 +37,7 @@ import '../features/presentation/bloc/home/home_bloc.dart';
 import '../features/presentation/bloc/home/home_event.dart';
 import '../features/presentation/pages/mainScreens/home_page.dart';
 import '../features/presentation/pages/mainScreens/profile/settings/about/privacy_policy.dart';
+import '../features/presentation/pages/main_page.dart';
 import '../features/presentation/pages/splash/bloc/splash_bloc.dart';
 import '../features/presentation/pages/splash/pages/splash_page.dart';
 import '../injector_container.dart';
@@ -55,12 +56,12 @@ sealed class AppRoutes {
             child: const SplashPage(),
           ),
         );
-      case Routes.homePage:
+      case Routes.mainPage:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) =>
                 sl<HomeBloc>()..add(const FetchCurrencyEvent()),
-            child: const HomePage(),
+            child: const MainPage(),
           ),
         );
 /****/

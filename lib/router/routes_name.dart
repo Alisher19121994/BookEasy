@@ -6,6 +6,8 @@ sealed class Routes {
   // HomePage 1
   static const String homePage = '/HomePage';
 
+  static const String mainPage = '/MainPage';
+
   // SavedPage 2
   static const String savedPage = '/SavedPage';
 
